@@ -7,7 +7,6 @@ import { fetchCollectionsSuccess, fetchCollectionsFailure } from "./shop.actions
 import ShopActionTypes from "./shop.types";
 
 export function* fetchCollectionsAsync() {
-  yield console.log("fired");
   try {
     const collectionRef = firestore.collection("collections");
     const snapshot = yield collectionRef.get();
@@ -23,5 +22,5 @@ export function* fetchCollectionsStart() {
 }
 
 export function* shopSagas() {
-  yield all[call(fetchCollectionsStart)];
+  yield all([call(fetchCollectionsStart)]);
 }
